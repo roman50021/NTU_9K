@@ -23,32 +23,32 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Button fx:id="fx_OutSessions" layoutX="28.0" layoutY="134.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Sessions">
+            <Button fx:id="fx_OutSessions" layoutX="28.0" layoutY="387.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Sessions">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="fx_OutFilms" layoutX="28.0" layoutY="267.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Films">
+            <Button fx:id="fx_OutFilms" layoutX="28.0" layoutY="179.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Films">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="fx_OutVisitors" layoutX="28.0" layoutY="199.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Visitors">
+            <Button fx:id="fx_OutVisitors" layoutX="28.0" layoutY="457.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Visitors">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="fx_OutActors" layoutX="28.0" layoutY="336.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Actors">
+            <Button fx:id="fx_OutActors" layoutX="28.0" layoutY="252.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Actors">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="fx_OutStudios" layoutX="28.0" layoutY="404.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Studios">
+            <Button fx:id="fx_OutStudios" layoutX="28.0" layoutY="319.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Studios">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button fx:id="fx_OutEditors" layoutX="28.0" layoutY="472.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Editors">
+            <Button fx:id="fx_OutEditors" layoutX="28.0" layoutY="527.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Editors">
                <font>
                   <Font size="20.0" />
                </font>

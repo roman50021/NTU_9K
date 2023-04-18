@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ntu_9k.Controller">
    <children>
       <ScrollBar layoutX="1173.0" layoutY="109.0" orientation="VERTICAL" prefHeight="591.0" prefWidth="27.0" style="-fx-background-color: #404040; -fx-border-color: #000000;" />
       <AnchorPane prefHeight="700.0" prefWidth="238.0" style="-fx-background-color: #000000;">
@@ -24,32 +23,32 @@
                   <Font size="33.0" />
                </font>
             </Text>
-            <Button layoutX="28.0" layoutY="134.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Sessions">
+            <Button fx:id="fx_OutSessions" layoutX="28.0" layoutY="134.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Sessions">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="267.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Films">
+            <Button fx:id="fx_OutFilms" layoutX="28.0" layoutY="267.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Films">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="199.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Visitors">
+            <Button fx:id="fx_OutVisitors" layoutX="28.0" layoutY="199.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Visitors">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="336.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Actors">
+            <Button fx:id="fx_OutActors" layoutX="28.0" layoutY="336.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Actors">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="404.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Studios">
+            <Button fx:id="fx_OutStudios" layoutX="28.0" layoutY="404.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Studios">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Button layoutX="28.0" layoutY="472.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Editors">
+            <Button fx:id="fx_OutEditors" layoutX="28.0" layoutY="472.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Editors">
                <font>
                   <Font size="20.0" />
                </font>
@@ -57,13 +56,17 @@
          </children>
       </AnchorPane>
       <AnchorPane layoutX="238.0" prefHeight="109.0" prefWidth="963.0" style="-fx-background-color: #3E5FC7;" />
-      <TableView layoutX="238.0" layoutY="109.0" prefHeight="483.0" prefWidth="937.0" style="-fx-background-color: #6E6E6E;">
+      <TableView fx:id="fx_OutTableView" layoutX="238.0" layoutY="109.0" prefHeight="483.0" prefWidth="937.0" style="-fx-background-color: #6E6E6E;">
         <columns>
-          <TableColumn prefWidth="104.0" text="C1" />
-          <TableColumn prefWidth="101.0" text="C2" />
-            <TableColumn prefWidth="101.0" text="C3" />
-            <TableColumn prefWidth="101.0" text="C4" />
-            <TableColumn prefWidth="101.0" text="C5" />
+          <TableColumn fx:id="fx_TableColumn_1" prefWidth="104.0" />
+          <TableColumn fx:id="fx_TableColumn_2" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_3" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_4" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_5" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_6" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_7" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_8" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_9" prefWidth="101.0" />
         </columns>
       </TableView>
    </children>

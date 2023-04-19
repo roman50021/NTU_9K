@@ -1,7 +1,5 @@
 package com.example.ntu_9k;
 
-import com.example.ntu_9k.ConnectionFactory;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,16 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie extends Cinema {
     private int movieId;
     private String title;
     private int releaseYear;
     private int directorId;
     private int studioId;
 
-    public Movie(){
-
-    }
+    public Movie(){}
 
     public Movie(int id, String title, int releaseYear, int directorId, int studioId) {
         this.movieId = id;

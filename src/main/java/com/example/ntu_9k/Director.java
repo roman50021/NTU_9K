@@ -2,32 +2,30 @@ package com.example.ntu_9k;
 
 public class Director {
     private int directorId;
-    private String firstName;
-    private String lastName;
+    private String name;
+    private int age;
+    private String gender;
 
-    // Геттеры и сеттеры для полей
+    public Director(int directorId, String name, int age, String gender) {
+        this.directorId = directorId;
+        this.name = name;
+        this.age = age;
+        this.gender = gender;
+    }
 
     public int getDirectorId() {
         return directorId;
     }
 
-    public void setDirectorId(int directorId) {
-        this.directorId = directorId;
+    public String getName() {
+        return name;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public int getAge() {
+        return age;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getGender() {
+        return gender;
     }
 }

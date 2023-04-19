@@ -3,22 +3,23 @@ package com.example.ntu_9k;
 public class Studio {
     private int studioId;
     private String name;
+    private String country;
 
-    // Геттеры и сеттеры для полей
+    public Studio(int studioId, String name, String country) {
+        this.studioId = studioId;
+        this.name = name;
+        this.country = country;
+    }
 
     public int getStudioId() {
         return studioId;
-    }
-
-    public void setStudioId(int studioId) {
-        this.studioId = studioId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getCountry() {
+        return country;
     }
 }

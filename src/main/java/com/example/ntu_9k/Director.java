@@ -1,31 +1,39 @@
 package com.example.ntu_9k;
 
-public class Director {
+public class Director extends Cinema{
     private int directorId;
-    private String name;
-    private int age;
-    private String gender;
+    private String first_name;
+    private String last_name;
 
-    public Director(int directorId, String name, int age, String gender) {
+    public Director(){}
+
+    public Director(int directorId, String first_name, String last_name) {
         this.directorId = directorId;
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+        this.first_name = first_name;
+        this.last_name = last_name;
     }
 
     public int getDirectorId() {
         return directorId;
     }
 
-    public String getName() {
-        return name;
+    public void setDirectorId(int directorId) {
+        this.directorId = directorId;
     }
 
-    public int getAge() {
-        return age;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public String getGender() {
-        return gender;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 }

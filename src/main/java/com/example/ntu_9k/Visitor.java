@@ -1,10 +1,19 @@
 package com.example.ntu_9k;
 
-public class Visitor {
+public class Visitor extends Cinema{
     private int visitorsId;
     private String firstName;
     private String lastName;
     private int sessionId;
+
+    public Visitor(){}
+
+    public Visitor(int visitorsId, String firstName, String lastName, int sessionId){
+        this.visitorsId = visitorsId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.sessionId =sessionId;
+    }
 
     // Геттеры и сеттеры для полей
 

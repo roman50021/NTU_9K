@@ -1,14 +1,15 @@
 package com.example.ntu_9k;
 
-public class Studio {
+public class Studio extends Cinema {
     private int studioId;
     private String name;
     private String country;
 
-    public Studio(int studioId, String name, String country) {
+    public Studio(){}
+    public Studio(int studioId, String name) {
         this.studioId = studioId;
         this.name = name;
-        this.country = country;
+
     }
 
     public int getStudioId() {
@@ -21,5 +22,17 @@ public class Studio {
 
     public String getCountry() {
         return country;
+    }
+
+    public void setStudioId(int studioId) {
+        this.studioId = studioId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

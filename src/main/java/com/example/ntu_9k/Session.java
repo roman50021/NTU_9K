@@ -1,9 +1,17 @@
 package com.example.ntu_9k;
 
-public class Session {
+public class Session extends Cinema{
     private int sessionId;
     private int movieId;
     private int visitorsId;
+
+    public Session(){}
+
+    public Session(int sessionId, int movieId, int visitorsId) {
+        this.sessionId = sessionId;
+        this.movieId = movieId;
+        this.visitorsId =visitorsId;
+    }
 
     // Геттеры и сеттеры для полей
 

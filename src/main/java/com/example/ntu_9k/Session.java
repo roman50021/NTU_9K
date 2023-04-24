@@ -2,15 +2,15 @@ package com.example.ntu_9k;
 
 public class Session extends Cinema{
     private int sessionId;
-    private int movieId;
-    private int visitorsId;
+    private int movieid;
+
 
     public Session(){}
 
-    public Session(int sessionId, int movieId, int visitorsId) {
+    public Session(int sessionId, int movieid) {
         this.sessionId = sessionId;
-        this.movieId = movieId;
-        this.visitorsId =visitorsId;
+        this.movieid = movieid;
+
     }
 
     // Геттеры и сеттеры для полей
@@ -24,18 +24,12 @@ public class Session extends Cinema{
     }
 
     public int getMovieId() {
-        return movieId;
+        return movieid;
     }
 
     public void setMovieId(int movieId) {
-        this.movieId = movieId;
+        this.movieid = movieId;
     }
 
-    public int getVisitorsId() {
-        return visitorsId;
-    }
 
-    public void setVisitorsId(int visitorsId) {
-        this.visitorsId = visitorsId;
-    }
 }

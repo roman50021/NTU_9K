@@ -3,7 +3,7 @@ package com.example.ntu_9k;
 public class Studio extends Cinema {
     private int studioId;
     private String name;
-    private String country;
+
 
     public Studio(){}
     public Studio(int studioId, String name) {
@@ -20,9 +20,7 @@ public class Studio extends Cinema {
         return name;
     }
 
-    public String getCountry() {
-        return country;
-    }
+
 
     public void setStudioId(int studioId) {
         this.studioId = studioId;
@@ -32,7 +30,5 @@ public class Studio extends Cinema {
         this.name = name;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
-    }
+
 }

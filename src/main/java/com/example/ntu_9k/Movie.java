@@ -14,7 +14,7 @@ public class Movie extends Cinema {
     private int directorId;
     private int studioId;
 
-    public Movie(){}
+    public Movie(String title, int releaseYear, int directorId, int studioId){}
 
     public Movie(int id, String title, int releaseYear, int directorId, int studioId) {
         this.movieId = id;
@@ -63,6 +63,36 @@ public class Movie extends Cinema {
         this.studioId = studioId;
     }
 
+/*
+    private TableColumn<Movie, String> titleColumn;
+    private TableColumn<Movie, Integer> releaseYearColumn;
+    private TableColumn<Movie, Integer> directorIdColumn;
+    private TableColumn<Movie, Integer> studioIdColumn;
+    public Object getValue(TableColumn<Movie, ?> column) {
+        if (column == titleColumn) {
+            return getTitle();
+        } else if (column == releaseYearColumn) {
+            return getReleaseYear();
+        } else if (column == directorIdColumn) {
+            return getDirectorId();
+        } else if (column == studioIdColumn) {
+            return getStudioId();
+        }
+        return null;
+    }
+*/
+public Object getValue(String columnName) {
+    if ("title".equals(columnName)) {
+        return getTitle();
+    } else if ("releaseYear".equals(columnName)) {
+        return getReleaseYear();
+    } else if ("directorId".equals(columnName)) {
+        return getDirectorId();
+    } else if ("studioId".equals(columnName)) {
+        return getStudioId();
+    }
+    return null;
+}
     public List<Movie> getAllMovies() {
 
         try (Connection connection = ConnectionFactory.getConnection();
@@ -86,7 +116,7 @@ public class Movie extends Cinema {
     }
 
     private Movie extractMovieFromResultSet(ResultSet rs)throws SQLException{
-        Movie movie = new Movie();
+        Movie movie = new Movie(title, releaseYear, directorId, studioId);
         movie.setMovieId(rs.getInt("movie_id"));
         movie.setTitle(rs.getString("title"));
         movie.setReleaseYear(rs.getInt("release_year"));
@@ -94,4 +124,6 @@ public class Movie extends Cinema {
         movie.setStudioId(rs.getInt("studio_id"));
         return movie;
     }
+
+
 }

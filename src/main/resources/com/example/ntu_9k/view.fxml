@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ntu_9k.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1380.0" style="-fx-background-color: #303030;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ntu_9k.Controller">
    <children>
       <AnchorPane prefHeight="700.0" prefWidth="238.0" style="-fx-background-color: #000000;">
          <children>
@@ -53,19 +53,53 @@
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="238.0" prefHeight="109.0" prefWidth="963.0" style="-fx-background-color: #3E5FC7;" />
-      <TableView fx:id="fx_OutTableView" layoutX="238.0" layoutY="109.0" prefHeight="592.0" prefWidth="963.0" style="-fx-background-color: #6E6E6E;">
+      <AnchorPane layoutX="238.0" prefHeight="109.0" prefWidth="870.0" style="-fx-background-color: #3E5FC7;" />
+      <TableView fx:id="fx_OutTableView" editable="true" layoutX="238.0" layoutY="109.0" prefHeight="592.0" prefWidth="870.0" style="-fx-background-color: #6E6E6E;">
         <columns>
-          <TableColumn fx:id="fx_TableColumn_1" prefWidth="104.0" />
-          <TableColumn fx:id="fx_TableColumn_2" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_3" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_4" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_5" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_6" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_7" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_8" prefWidth="101.0" />
-            <TableColumn fx:id="fx_TableColumn_9" prefWidth="101.0" />
+          <TableColumn fx:id="fx_TableColumn_1" editable="true" prefWidth="104.0" />
+          <TableColumn fx:id="fx_TableColumn_2" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_3" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_4" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_5" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_6" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_7" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_8" editable="true" prefWidth="101.0" />
+            <TableColumn fx:id="fx_TableColumn_9" editable="true" prefWidth="101.0" />
         </columns>
       </TableView>
+      <AnchorPane layoutX="1108.0" layoutY="-3.0" prefHeight="708.0" prefWidth="271.0" style="-fx-background-color: #000000;">
+         <children>
+            <Button fx:id="fx_AddFilms" layoutX="45.0" layoutY="122.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Films">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fx_AddActors" layoutX="45.0" layoutY="193.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Actors">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fx_AddStudios" layoutX="45.0" layoutY="264.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Studios">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fx_AddSessions" layoutX="45.0" layoutY="334.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Sessions">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fx_AddVisitors" layoutX="45.0" layoutY="400.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Visitors">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+            <Button fx:id="fx_AddEditors" layoutX="45.0" layoutY="472.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="182.0" style="-fx-background-color: #3E5FC7;" text="Add Editors">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

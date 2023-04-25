@@ -83,6 +83,9 @@ public class Controller {
     @FXML
     private TableColumn<?, ?> fx_TableColumn_9;
 
+    @FXML
+    private Button fx_Deletion;
+
 
     private ObservableList<Object> List = FXCollections.observableArrayList();
 
@@ -571,8 +574,93 @@ public class Controller {
                 fx_OutTableView.refresh();
             });
         });
-    }
 
+        //Удаление элементов
+
+
+        fx_Deletion.setOnAction(event -> {
+            // Создаем диалоговое окно для удаления элемента из таблицы
+            Dialog<Void> dialog = new Dialog<>();
+            dialog.setTitle("Удалить элемент из таблицы");
+
+            // Устанавливаем кнопку "Удалить" и кнопку "Отмена"
+            ButtonType deleteButton = new ButtonType("Удалить", ButtonBar.ButtonData.OK_DONE);
+            dialog.getDialogPane().getButtonTypes().addAll(deleteButton, ButtonType.CANCEL);
+
+            // Создаем форму для выбора таблицы и ввода имени колонки и значения ID
+            GridPane grid = new GridPane();
+            grid.setHgap(10);
+            grid.setVgap(10);
+
+            // Создаем ChoiceBox для выбора таблицы
+            ChoiceBox<String> tableChoiceBox = new ChoiceBox<>();
+            tableChoiceBox.getItems().addAll("actors", "directors", "movies", "sessions", "studios", "visitors");
+            tableChoiceBox.setValue("actors");
+
+            // Создаем текстовое поле для ввода имени колонки
+            TextField columnNameTextField = new TextField();
+            columnNameTextField.setPromptText("Введите имя колонки");
+
+            // Создаем текстовое поле для ввода значения ID
+            TextField idTextField = new TextField();
+            idTextField.setPromptText("Введите значение ID");
+
+            // Добавляем ChoiceBox и текстовые поля на форму
+            grid.add(new Label("Таблица:"), 0, 0);
+            grid.add(tableChoiceBox, 1, 0);
+            grid.add(new Label("Имя колонки:"), 0, 1);
+            grid.add(columnNameTextField, 1, 1);
+            grid.add(new Label("Значение ID:"), 0, 2);
+            grid.add(idTextField, 1, 2);
+
+            // Устанавливаем форму на диалоговое окно
+            dialog.getDialogPane().setContent(grid);
+
+            // Устанавливаем фокус на поле ввода имени колонки при открытии окна
+            Platform.runLater(() -> columnNameTextField.requestFocus());
+
+            // Обрабатываем результат нажатия кнопки "Удалить"
+            dialog.setResultConverter(buttonType -> {
+                if (buttonType == deleteButton) {
+                    // Извлекаем выбранную таблицу, имя колонки и значение ID из полей ввода
+                    String table = tableChoiceBox.getValue();
+                    String columnName = columnNameTextField.getText();
+                    String id = idTextField.getText();
+
+                    // Вызываем метод deleteElementFromDatabase() с передачей имени колонки, значения ID и имени таблицы
+                    deleteElementFromDatabase(table, columnName, id);
+
+                    // Добавьте здесь код для обновления таблицы в пользовательском интерфейсе, если необходимо
+
+                    // Возвращаем результат диалога
+                    return null;
+                }
+                return null;
+            });
+
+            // Отображаем диалоговое окно и ждем его закрытия
+            dialog.showAndWait();
+        });
+    }
+    private void deleteElementFromDatabase(String table, String columnName, String id) {
+        try {
+            // Создаем подключение к базе данных
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntuk", "root", "sabarak");
+            // Создаем SQL-запрос для удаления элемента из таблицы
+            String sql = "DELETE FROM " + table + " WHERE " + columnName + " = ?";
+            // Подготавливаем SQL-запрос
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            // Устанавливаем значение ID в параметр SQL-запроса
+            preparedStatement.setString(1, id);
+            // Выполняем SQL-запрос
+            preparedStatement.executeUpdate();
+            // Закрываем соединение с базой данных и освобождаем ресурсы
+            preparedStatement.close();
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     private void addEditorToDatabase(Director director) {
         // Подключение к базе данных
         Connection connection = null;

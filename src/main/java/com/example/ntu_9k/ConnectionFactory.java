@@ -32,7 +32,7 @@ public class ConnectionFactory {
      *
      * @return Пароль
      */
-    private static String getPassword() {
+    protected static String getPassword() {
         // Ваш код для получения пароля из безопасного источника
         String password = "sabarak"; // Пример: пароль получен из безопасного источника
         return password;

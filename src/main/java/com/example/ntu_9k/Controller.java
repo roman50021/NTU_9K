@@ -15,6 +15,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javafx.event.ActionEvent;
 
 public class Controller {
     @FXML
@@ -92,26 +93,28 @@ public class Controller {
     public void initialize() {
 
 
-        fx_OutTableView.setEditable(true);
+        fx_OutTableView.setEditable(true); //  - робить таблицю редагованою.
 
-        fx_OutActors.setOnAction(event -> {
-            fx_TableColumn_1.setText("Actor_Id");
-            fx_TableColumn_2.setText("First Name");
-            fx_TableColumn_3.setText("Last Name");
-            fx_TableColumn_4.setText(" ");
-            fx_TableColumn_5.setText(" ");
-            List<Actor> actors = fetchActorsData();
-            ObservableList<Cinema> actorsList = FXCollections.observableArrayList(actors);
-            fx_OutTableView.setItems(actorsList);
-            fx_TableColumn_1.setCellValueFactory(new PropertyValueFactory<>("actorId"));
+        fx_OutActors.setOnAction(event -> { //  - встановлює обробник події на натискання кнопки "fx_OutActors".
+            // Далі виконується код, який буде виконуватися при кожному натисканні кнопки.
+            fx_TableColumn_1.setText("Actor_Id"); // - встановлює заголовки стовпців таблиці.
+            fx_TableColumn_2.setText("First Name"); // - встановлює заголовки стовпців таблиці.
+            fx_TableColumn_3.setText("Last Name"); // - встановлює заголовки стовпців таблиці.
+            fx_TableColumn_4.setText(" "); // - встановлює заголовки стовпців таблиці.
+            fx_TableColumn_5.setText(" "); // - встановлює заголовки стовпців таблиці.
+            List<Actor> actors = fetchActorsData(); //  - отримує список об'єктів Actor з бази даних.
+            ObservableList<Cinema> actorsList = FXCollections.observableArrayList(actors); //  - перетворює список Actor
+            // на ObservableList для використання в таблиці.
+            fx_OutTableView.setItems(actorsList); // -  - встановлює новий список елементів таблиці.
+            fx_TableColumn_1.setCellValueFactory(new PropertyValueFactory<>("actorId")); // -  - встановлює фабрику
+            // значень для кожного стовпця таблиці,
+            // що дозволяє відображати значення відповідних полів об'єктів в кожному стовпці.
             fx_TableColumn_2.setCellValueFactory(new PropertyValueFactory<>("firstName"));
             fx_TableColumn_3.setCellValueFactory(new PropertyValueFactory<>("lastName"));
             fx_TableColumn_4.setCellValueFactory(new PropertyValueFactory<>(null));
             fx_TableColumn_5.setCellValueFactory(new PropertyValueFactory<>(null));
-            handleFxOutActorAction(null);
+            handleFxOutActorAction(null);// - викликає метод handleFxOutActorAction() для оновлення вмісту таблиці.
         });
-
-
 
 
         fx_OutStudios.setOnAction(event -> {
@@ -276,58 +279,58 @@ public class Controller {
         });
 
         fx_AddActors.setOnAction(event -> {
-            // Создаем диалоговое окно для ввода данных актера
+            // Створюємо діалогове вікно для введення даних актора
             Dialog<Actor> dialog = new Dialog<>();
             dialog.setTitle("Добавить актера");
 
-            // Устанавливаем кнопку "Добавить" и кнопку "Отмена"
+            // Встановлюємо кнопку "Додати" та кнопку "Скасувати"
             ButtonType addButton = new ButtonType("Добавить", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(addButton, ButtonType.CANCEL);
 
-            // Создаем форму для ввода данных
+            // Створюємо форму для введення даних
             GridPane grid = new GridPane();
             grid.setHgap(10);
             grid.setVgap(10);
 
-            // Создаем текстовые поля для ввода данных
+            // Створюємо текстові поля для введення даних
             TextField firstNameTextField = new TextField();
             TextField lastNameTextField = new TextField();
 
-            // Добавляем текстовые поля на форму
+            // Додаємо текстові поля на форму
             grid.add(new Label("First Name:"), 0, 0);
             grid.add(firstNameTextField, 1, 0);
             grid.add(new Label("Last Name:"), 0, 1);
             grid.add(lastNameTextField, 1, 1);
 
-            // Устанавливаем форму на диалоговое окно
+            // Встановлюємо форму на діалогове вікно
             dialog.getDialogPane().setContent(grid);
 
-            // Устанавливаем фокус на поле First Name при открытии окна
+            // Встановлюємо фокус на полі First Name під час відкриття вікна
             Platform.runLater(() -> firstNameTextField.requestFocus());
 
-            // Обрабатываем результат нажатия кнопки "Добавить"
+            // Обробляємо результат натискання кнопки "Додати"
             dialog.setResultConverter(buttonType -> {
                 if (buttonType == addButton) {
-                    // Извлекаем данные из текстовых полей
+                    // Вилучаємо дані з текстових полів
                     String firstName = firstNameTextField.getText();
                     String lastName = lastNameTextField.getText();
 
-                    // Создаем объект Actor с введенными данными
+                    // Створюємо об'єкт Actor із введеними даними
                     Actor actor = new Actor(0,firstName, lastName);
 
-                    // Добавляем актера в базу данных
+                    // Додаємо актора до бази даних
                     addActorToDatabase(actor);
 
-                    // Возвращаем объект Actor в качестве результата
+                    // Повертаємо об'єкт Actor як результат
                     return actor;
                 }
                 return null;
             });
 
-            // Открываем диалоговое окно и ждем результата
+            // Відкриваємо діалогове вікно і чекаємо на результат
             Optional<Actor> result = dialog.showAndWait();
 
-            // Обновляем TableView, если был добавлен новый актер
+            //Оновлюємо TableView, якщо було додано новий актор
             result.ifPresent(actor -> {
                 fx_OutTableView.getItems().add(actor);
                 fx_OutTableView.refresh();
@@ -579,33 +582,33 @@ public class Controller {
 
 
         fx_Deletion.setOnAction(event -> {
-            // Создаем диалоговое окно для удаления элемента из таблицы
+            // Створюємо діалогове вікно для видалення елемента з таблиці
             Dialog<Void> dialog = new Dialog<>();
             dialog.setTitle("Удалить элемент из таблицы");
 
-            // Устанавливаем кнопку "Удалить" и кнопку "Отмена"
+            // Встановлюємо кнопку "Видалити" та кнопку "Скасувати"
             ButtonType deleteButton = new ButtonType("Удалить", ButtonBar.ButtonData.OK_DONE);
             dialog.getDialogPane().getButtonTypes().addAll(deleteButton, ButtonType.CANCEL);
 
-            // Создаем форму для выбора таблицы и ввода имени колонки и значения ID
+            // Створюємо форму для вибору таблиці та введення імені колонки та значення ID
             GridPane grid = new GridPane();
             grid.setHgap(10);
             grid.setVgap(10);
 
-            // Создаем ChoiceBox для выбора таблицы
+            // Створюємо ChoiceBox для вибору таблиці
             ChoiceBox<String> tableChoiceBox = new ChoiceBox<>();
             tableChoiceBox.getItems().addAll("actors", "directors", "movies", "sessions", "studios", "visitors");
             tableChoiceBox.setValue("actors");
 
-            // Создаем текстовое поле для ввода имени колонки
+            // Створюємо текстове поле для введення імені колонки
             TextField columnNameTextField = new TextField();
             columnNameTextField.setPromptText("Введите имя колонки");
 
-            // Создаем текстовое поле для ввода значения ID
+            // Створюємо текстове поле для введення значення ID
             TextField idTextField = new TextField();
             idTextField.setPromptText("Введите значение ID");
 
-            // Добавляем ChoiceBox и текстовые поля на форму
+            // Додаємо ChoiceBox та текстові поля на форму
             grid.add(new Label("Таблица:"), 0, 0);
             grid.add(tableChoiceBox, 1, 0);
             grid.add(new Label("Имя колонки:"), 0, 1);
@@ -613,48 +616,48 @@ public class Controller {
             grid.add(new Label("Значение ID:"), 0, 2);
             grid.add(idTextField, 1, 2);
 
-            // Устанавливаем форму на диалоговое окно
+            // Встановлюємо форму на діалогове вікно
             dialog.getDialogPane().setContent(grid);
 
-            // Устанавливаем фокус на поле ввода имени колонки при открытии окна
+            // Встановлюємо фокус на полі введення імені колонки під час відкриття вікна
             Platform.runLater(() -> columnNameTextField.requestFocus());
 
-            // Обрабатываем результат нажатия кнопки "Удалить"
+            // Обробляємо результат натискання кнопки "Видалити"
             dialog.setResultConverter(buttonType -> {
                 if (buttonType == deleteButton) {
-                    // Извлекаем выбранную таблицу, имя колонки и значение ID из полей ввода
+                    // Виймаємо вибрану таблицю, ім'я колонки та значення ID з полів уведення
                     String table = tableChoiceBox.getValue();
                     String columnName = columnNameTextField.getText();
                     String id = idTextField.getText();
 
-                    // Вызываем метод deleteElementFromDatabase() с передачей имени колонки, значения ID и имени таблицы
+                    // Викликаємо метод deleteElementFromDatabase() з передачею імені колонки, значення ID та імені таблиці
                     deleteElementFromDatabase(table, columnName, id);
 
-                    // Добавьте здесь код для обновления таблицы в пользовательском интерфейсе, если необходимо
 
-                    // Возвращаем результат диалога
+
+                    // Повертаємо результат діалогу
                     return null;
                 }
                 return null;
             });
 
-            // Отображаем диалоговое окно и ждем его закрытия
+            // Відображаємо діалогове вікно та чекаємо на його закриття
             dialog.showAndWait();
         });
     }
     private void deleteElementFromDatabase(String table, String columnName, String id) {
         try {
-            // Создаем подключение к базе данных
+            //Створюємо підключення до бази даних
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntuk", "root", "sabarak");
-            // Создаем SQL-запрос для удаления элемента из таблицы
+            // Створюємо SQL-запит для видалення елемента з таблиці
             String sql = "DELETE FROM " + table + " WHERE " + columnName + " = ?";
-            // Подготавливаем SQL-запрос
+            // Готуємо SQL-запит
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            // Устанавливаем значение ID в параметр SQL-запроса
+            //Встановлюємо значення ID у параметр SQL-запиту
             preparedStatement.setString(1, id);
-            // Выполняем SQL-запрос
+            // Виконуємо SQL-запит
             preparedStatement.executeUpdate();
-            // Закрываем соединение с базой данных и освобождаем ресурсы
+            // Закриваємо з'єднання з базою даних та звільняємо ресурси
             preparedStatement.close();
             connection.close();
         } catch (SQLException e) {
@@ -808,34 +811,39 @@ public class Controller {
             System.out.println("Ошибка при добавлении студии в базу данных: " + e.getMessage());
         }
     }
+    // Оголошення методу з параметром типу Actor, який додає актора до бази даних
     private void addActorToDatabase(Actor actor) {
         try {
-            // Создаем подключение к базе данных
+            // Створення підключення до бази даних з використанням параметрів підключення
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntuk", "root", "sabarak");
 
-            // Создаем SQL-запрос на добавление актера без указания значения для поля id
+            // Підготовка SQL-запиту на вставку даних про актора в таблицю actors
+            // Запит містить два параметри, які потрібно встановити з використанням PreparedStatement
             String query = "INSERT INTO actors (first_name, last_name) VALUES (?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, actor.getFirstName());
             preparedStatement.setString(2, actor.getLastName());
 
 
-            // Выполняем SQL-запрос
+            // Виконання SQL-запиту на вставку даних про актора в таблицю actors
             preparedStatement.executeUpdate();
 
-            // Получаем сгенерированный базой данных ID актера
+            // Отримання ID актора, що було згенеровано автоматично базою даних
             ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int actorId = generatedKeys.getInt(1);
-                actor.setActorId(actorId); // Устанавливаем сгенерированный ID актера в объекте Actor
+                actor.setActorId(actorId); // Встановлення ID актора в об'єкті Actor
+
             }
 
-            // Закрываем подключение к базе данных
+            // Закриття підключення до бази даних
             preparedStatement.close();
             connection.close();
 
+            // Виведення повідомлення про успішне додавання актора до бази даних
             System.out.println("Актер успешно добавлен в базу данных. ID: " + actor.getActorId());
         } catch (SQLException e) {
+            // Виведення повідомлення про помилку при додаванні актора до бази даних
             System.out.println("Ошибка при добавлении актера в базу данных: " + e.getMessage());
         }
     }
